@@ -43,14 +43,13 @@ public class VSmain
 		}
 		
 		//for reading from and writing to files
-		FileWriter fw = new FileWriter(filename+".txt", true);
 		FileReader fr = new FileReader(filename+".txt");
 		BufferedReader textReader = new BufferedReader(fr);
 		String textData = new String();
 		textData = textReader.readLine();
 		textReader.close();
 		//(makes a new clean file to write to later, during save)
-		File file = new File(filename+".txt");
+		FileWriter fw = new FileWriter(filename+".txt");
 		
 		//test code, to see what was in the .txt file
 		System.out.println(textData);
@@ -71,8 +70,11 @@ public class VSmain
 	public static void selectAction(ArrayList<String[]> castList, FileWriter fw) throws IOException
 	{
 		Scanner kba = new Scanner(System.in);
-		System.out.println("What would you like to do? \n(1)add actor \n(2)edit actor \n(3)delete actor \n(4)save");
+		System.out.println("What would you like to do? \n(1)add actor \n(2)edit actor \n(3)delete actor \n(4)save \n(5)search");
 		int ansAction = kba.nextInt();
+		
+		ArrayList<String[]> searchResults = castList;
+		
 		if (ansAction==1)
 		{
 			//adds a new String[] to castList and prompts input for each element of String[]
@@ -92,6 +94,10 @@ public class VSmain
 		{
 			//puts data from arrays, translates it (adds markers), turns into single string, writes to file
 			VSstore.saveActor(castList, fw);
+		}
+		if (ansAction==5)
+		{
+			VSsearch.searchOption(searchResults);
 		}
 	}
 }

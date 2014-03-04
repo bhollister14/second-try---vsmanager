@@ -60,67 +60,90 @@ public class VSedit
 			
 			System.out.println("Whose data would you like to edit?");
 			String changePerson = new String(kb.nextLine());
+			String[] temp = output.get(0);
 			
 			for (int k=0; k<output.size(); k++)
 			{//ERROR: NO CHANGES CAN BE MADE??
-				if (output.get(k)[0].equals(changePerson))
+				temp = output.get(k);
+				System.out.println("Temp 0 = " + temp[0]);
+				if (temp[0].equals(changePerson))
 				{ //allows for specific changes based on person's name (same k, same person)
 					System.out.println("What would you like to change? \n(0)name \n(1)scene \n(2)role \n(3)grade \n(4)height \n(5)weight \n(6)measurements \n(7)notes");
-					int ansAction = kb.nextInt();
+					int ansAction;
+					ansAction = kb.nextInt();
+					System.out.println(ansAction);
+					String input = new String("");
+					if (ansAction>=0 && ansAction<=7)
+					{
 					if (ansAction==0)
 					{
-						System.out.println("current name: "+output.get(k)[0]);
+						System.out.println("current name: "+temp[0]);
 						System.out.println("What would you like to change it to?");
-						output.get(k)[0] = kb.nextLine();
+						input = kb.nextLine();
+						temp[0] = input;
+						//String test = kb.nextLine();
+						//temp[0] = test;
+						//System.out.println(temp[0]);
 					}
 					else if (ansAction==1)
 					{
-						System.out.println("current scene: "+output.get(k)[1]);
+						System.out.println("current scene: "+temp[1]);
 						System.out.println("What would you like to change it to?");
-						output.get(k)[1] = kb.nextLine();
+						input = kb.nextLine();
+						temp[1] = input;
 					}
 					else if (ansAction==2)
 					{
-						System.out.println("current role: "+output.get(k)[2]);
+						System.out.println("current role: "+temp[2]);
 						System.out.println("What would you like to change it to?");
-						output.get(k)[2] = kb.nextLine();
+						input = kb.nextLine();
+						temp[2] = input;
 					}
 					else if (ansAction==3)
 					{
-						System.out.println("current grade: "+output.get(k)[3]);
+						System.out.println("current grade: "+temp[3]);
 						System.out.println("What would you like to change it to?");
-						output.get(k)[3] = kb.nextLine();
+						input = kb.nextLine();
+						temp[3] = input;
 					}
 					else if (ansAction==4)
 					{
-						System.out.println("current height: "+output.get(k)[4]);
+						System.out.println("current height: "+temp[4]);
 						System.out.println("What would you like to change it to?");
-						output.get(k)[4] = kb.nextLine();
+						input = kb.nextLine();
+						temp[4] = input;
 					}
 					else if (ansAction==5)
 					{
-						System.out.println("current weight: "+output.get(k)[5]);
+						System.out.println("current weight: "+temp[5]);
 						System.out.println("What would you like to change it to?");
-						output.get(k)[5] = kb.nextLine();
+						input = kb.nextLine();
+						temp[5] = input;
 					}
 					else if (ansAction==6)
 					{
-						System.out.println("current measurements: "+output.get(k)[6]);
+						System.out.println("current measurements: "+temp[6]);
 						System.out.println("What would you like to change it to?");
-						output.get(k)[6] = kb.nextLine();
+						input = kb.nextLine();
+						temp[6] = input;
 					}
 					else if (ansAction==7)
 					{
-						System.out.println("current notes: "+output.get(k)[7]);
+						System.out.println("current notes: "+temp[7]);
 						System.out.println("What would you like to change it to?");
-						output.get(k)[7] = kb.nextLine();
+						input = kb.nextLine();
+						temp[7] = input;
+					}
+					input = kb.nextLine();
+					temp[ansAction] = input;
+					System.out.println("Your changes have been made.");
 					}
 					else
 					{
-						//added for [unsuccessful] debugging
+						//added for debugging
 						System.out.println("No changes have been made.");
 					}
-					System.out.println("Your changes have been made.");
+					
 				}
 			}
 			return output;

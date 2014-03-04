@@ -39,39 +39,34 @@ public class VSstore
 		}
 		int needLists = countHashOne-1;
 		String[] actorData = new String[8];
-		for (int s=0; s<needLists; s++)
-		{
-			output.add(actorData);
-		}
-		
-		//for adding the text portions using the markers (neglecting markers in arrays)
-		int countHash = 0;
+
 		//goes through every letter/character for special chars
 		for (int k=0; k<complete.length()-1; k++)
 		{
+			//#a~a!a%a&a*a<aa>a
 			//when the name one is found, add the rest of the stuff 
 			//  right after it to the other elements of the string[] for that castList index
 			if (complete.substring(k, k+1).equals("#"))
 			{
-				castList.get(countHash)[0] = complete.substring(complete.indexOf("#")+1, complete.indexOf("~"));
-				castList.get(countHash)[1] = complete.substring(complete.indexOf("~")+1, complete.indexOf("!"));
-				castList.get(countHash)[2] = complete.substring(complete.indexOf("!")+1, complete.indexOf("%"));
-				castList.get(countHash)[3] = complete.substring(complete.indexOf("%")+1, complete.indexOf("&"));
-				castList.get(countHash)[4] = complete.substring(complete.indexOf("&")+1, complete.indexOf("*"));
-				castList.get(countHash)[5] = complete.substring(complete.indexOf("*")+1, complete.indexOf("<"));
-				castList.get(countHash)[6] = complete.substring(complete.indexOf("<")+1, complete.indexOf(">"));
+				actorData[0] = complete.substring(complete.indexOf("#"), complete.indexOf("~"));
+				actorData[1] = complete.substring(complete.indexOf("~"), complete.indexOf("!"));
+				actorData[2] = complete.substring(complete.indexOf("!"), complete.indexOf("%"));
+				actorData[3] = complete.substring(complete.indexOf("%"), complete.indexOf("&"));
+				actorData[4] = complete.substring(complete.indexOf("&"), complete.indexOf("*"));
+				actorData[5] = complete.substring(complete.indexOf("*"), complete.indexOf("<"));
+				actorData[6] = complete.substring(complete.indexOf("<"), complete.indexOf(">"));
 				//just in case this is the last person needed to list... stop looking for #
-				if (complete.indexOf("#")!=-1)
+				if (complete.substring(k+1).indexOf("#")!=-1)
 				{
-					castList.get(countHash)[7] = complete.substring(complete.indexOf(">")+1, complete.indexOf("#"));
+					actorData[7] = complete.substring(complete.indexOf(">"), complete.substring(k+1).indexOf("#"));
 				}
 				else
 				{
-					castList.get(countHash)[7] = complete.substring(complete.indexOf(">")+1);
+					actorData[7] = complete.substring(complete.indexOf(">"));
 				}
-				//to the next person!
-				countHash++;
+				output.add(actorData);
 			}
+		return output;
 		}
 		return output;
 	}
@@ -90,35 +85,35 @@ public class VSstore
 			{
 				if (w==0)
 				{
-					toSave+=castList.get(q)[0]+"#";
+					toSave+="#"+castList.get(q)[0];
 				}
 				if (w==1)
 				{
-					toSave+=castList.get(q)[1]+"~";
+					toSave+="~"+castList.get(q)[1];
 				}
 				if (w==2)
 				{
-					toSave+=castList.get(q)[2]+"!";
+					toSave+="!"+castList.get(q)[2];
 				}
 				if (w==3)
 				{
-					toSave+=castList.get(q)[3]+"%";
+					toSave+="%"+castList.get(q)[3];
 				}
 				if (w==4)
 				{
-					toSave+=castList.get(q)[4]+"&";
+					toSave+="&"+castList.get(q)[4];
 				}
 				if (w==5)
 				{
-					toSave+=castList.get(q)[5]+"*";
+					toSave+="*"+castList.get(q)[5];
 				}
 				if (w==6)
 				{
-					toSave+=castList.get(q)[6]+"<";
+					toSave+="<"+castList.get(q)[6];
 				}
 				if (w==7)
 				{
-					toSave+=castList.get(q)[7]+">";
+					toSave+=">"+castList.get(q)[7];
 				}
 			}
 		}
