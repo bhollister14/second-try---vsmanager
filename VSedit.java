@@ -22,32 +22,32 @@ public class VSedit
 			Scanner kb = new Scanner(System.in);
 			
 			//yay output
-			ArrayList<String[]> output = new ArrayList<String[]>();
-			output = castList;
+			ArrayList<String[]> outputD = new ArrayList<String[]>();
+			outputD = castList;
 			
 			//adds a new String[] to castList (first output)
 			String[] actorData = new String[8];
-			int arraySize = output.size();
-			output.add(actorData); 
+			int arraySize = outputD.size();
+			outputD.add(actorData); 
 			
 			//input ALL the data
 			System.out.println("Actor name:");
-			output.get(arraySize)[0]=kb.nextLine();
+			outputD.get(arraySize)[0]=kb.nextLine();
 			System.out.println("Actor scene:");
-			output.get(arraySize)[1]=kb.nextLine();
+			outputD.get(arraySize)[1]=kb.nextLine();
 			System.out.println("Actor role:");
-			output.get(arraySize)[2]=kb.nextLine();
+			outputD.get(arraySize)[2]=kb.nextLine();
 			System.out.println("Actor grade:");
-			output.get(arraySize)[3]=kb.nextLine();
+			outputD.get(arraySize)[3]=kb.nextLine();
 			System.out.println("Actor height:");
-			output.get(arraySize)[4]=kb.nextLine();
+			outputD.get(arraySize)[4]=kb.nextLine();
 			System.out.println("Actor weight:");
-			output.get(arraySize)[5]=kb.nextLine();
+			outputD.get(arraySize)[5]=kb.nextLine();
 			System.out.println("Actor measurements:");
-			output.get(arraySize)[6]=kb.nextLine();
+			outputD.get(arraySize)[6]=kb.nextLine();
 			System.out.println("Actor notes:");
-			output.get(arraySize)[7]=kb.nextLine();
-			return output;
+			outputD.get(arraySize)[7]=kb.nextLine();
+			return outputD;
 		}
 		
 		public static ArrayList<String[]> editActor(ArrayList<String[]> castList)
@@ -55,16 +55,16 @@ public class VSedit
 			Scanner kb = new Scanner(System.in);
 			
 			//yay output
-			ArrayList<String[]> output = new ArrayList<String[]>();
-			output = castList;
+			ArrayList<String[]> outputE = new ArrayList<String[]>();
+			outputE = castList;
 			
 			System.out.println("Whose data would you like to edit?");
 			String changePerson = new String(kb.nextLine());
-			String[] temp = output.get(0);
+			String[] temp = outputE.get(0);
 			
-			for (int k=0; k<output.size(); k++)
+			for (int k=0; k<outputE.size(); k++)
 			{//ERROR: NO CHANGES CAN BE MADE??
-				temp = output.get(k);
+				temp = outputE.get(k);
 				System.out.println("Temp 0 = " + temp[0]);
 				if (temp[0].equals(changePerson))
 				{ //allows for specific changes based on person's name (same k, same person)
@@ -146,7 +146,7 @@ public class VSedit
 					
 				}
 			}
-			return output;
+			return outputE;
 		}
 		
 		public static ArrayList<String[]> delActor(ArrayList<String[]> castList)
@@ -154,21 +154,21 @@ public class VSedit
 			Scanner kb = new Scanner(System.in);
 			
 			//yay output
-			ArrayList<String[]> output = new ArrayList<String[]>();
-			output = castList;
+			ArrayList<String[]> outputL = new ArrayList<String[]>();
+			outputL = castList;
 			
 			System.out.println("Whose data would you like to delete?");
 			String ansDel = new String(kb.nextLine());
 			
 			//input a name (index 0 is name), we'll get rid of him/her
-			for (int k=0; k<output.size(); k++)
+			for (int k=0; k<outputL.size(); k++)
 			{
-				if (output.get(k)[0].equals(ansDel))
+				if (outputL.get(k)[0].equals(ansDel))
 				{
 					System.out.println("Are you sure? (Y/N)");
 					if (kb.nextLine().equals("Y"))
 					{
-						output.remove(k);
+						outputL.remove(k);
 						System.out.println("Actor successfully deleted.");
 					}
 					else
@@ -177,6 +177,6 @@ public class VSedit
 					}
 				}
 			}
-			return output;
+			return outputL;
 		}
 }

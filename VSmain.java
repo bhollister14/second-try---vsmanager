@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 public class VSmain 
 {
+	static boolean runProgram = true;
 	public static void main(String[] args) throws IOException
 	{
 		//have you created a file?
@@ -59,21 +60,21 @@ public class VSmain
 		castList = VSstore.openActor(castList, fr, textData);
 		
 		//loop to display the menu after completing actions
-		boolean runProgram = true;
 		while (runProgram)
 		{
 			VSmain.selectAction(castList, fw);
 		}
+		fw.close();
 	}
 	
 	//just lets the user choose what to do... names are pretty self-explanatory
 	public static void selectAction(ArrayList<String[]> castList, FileWriter fw) throws IOException
 	{
 		Scanner kba = new Scanner(System.in);
-		System.out.println("What would you like to do? \n(1)add actor \n(2)edit actor \n(3)delete actor \n(4)save \n(5)search");
+		System.out.println("What would you like to do? \n(1)add actor \n(2)edit actor \n(3)delete actor \n(4)save \n(5)search \n(6)exit");
 		int ansAction = kba.nextInt();
 		
-		ArrayList<String[]> searchResults = castList;
+		ArrayList<String[]> searchResults = new ArrayList<String[]>();
 		
 		if (ansAction==1)
 		{
@@ -97,7 +98,14 @@ public class VSmain
 		}
 		if (ansAction==5)
 		{
+			//search filters BEGINNNNNN
+			searchResults = castList;
 			VSsearch.searchOption(searchResults);
+		}
+		if (ansAction==6)
+		{
+			runProgram = false;
+			System.out.println("Bye-bye!");
 		}
 	}
 }

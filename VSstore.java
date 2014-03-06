@@ -20,14 +20,14 @@ public class VSstore
 	//just puts the textData into arrays
 	public static ArrayList<String[]> openActor(ArrayList<String[]> castList, FileReader fr, String textData) throws IOException
 	{
-		ArrayList<String[]> output = new ArrayList<String[]>();
+		ArrayList<String[]> outputA = new ArrayList<String[]>();
 		String complete = new String("");
 		complete+=textData; 
 		//complete takes the value of textData (since complete is empty)
 		//if it's still empty, there's no data, just return the empty arrayList
 		if (complete.equals(""))
 		{
-			return output;
+			return outputA;
 		}
 		
 		//for counting the required size of castList (String[] must be 8)
@@ -48,27 +48,27 @@ public class VSstore
 			//  right after it to the other elements of the string[] for that castList index
 			if (complete.substring(k, k+1).equals("#"))
 			{
-				actorData[0] = complete.substring(complete.indexOf("#"), complete.indexOf("~"));
-				actorData[1] = complete.substring(complete.indexOf("~"), complete.indexOf("!"));
-				actorData[2] = complete.substring(complete.indexOf("!"), complete.indexOf("%"));
-				actorData[3] = complete.substring(complete.indexOf("%"), complete.indexOf("&"));
-				actorData[4] = complete.substring(complete.indexOf("&"), complete.indexOf("*"));
-				actorData[5] = complete.substring(complete.indexOf("*"), complete.indexOf("<"));
-				actorData[6] = complete.substring(complete.indexOf("<"), complete.indexOf(">"));
+				actorData[0] = complete.substring(complete.indexOf("#")+1, complete.indexOf("~"));
+				actorData[1] = complete.substring(complete.indexOf("~")+1, complete.indexOf("!"));
+				actorData[2] = complete.substring(complete.indexOf("!")+1, complete.indexOf("%"));
+				actorData[3] = complete.substring(complete.indexOf("%")+1, complete.indexOf("&"));
+				actorData[4] = complete.substring(complete.indexOf("&")+1, complete.indexOf("*"));
+				actorData[5] = complete.substring(complete.indexOf("*")+1, complete.indexOf("<"));
+				actorData[6] = complete.substring(complete.indexOf("<")+1, complete.indexOf(">"));
 				//just in case this is the last person needed to list... stop looking for #
 				if (complete.substring(k+1).indexOf("#")!=-1)
 				{
-					actorData[7] = complete.substring(complete.indexOf(">"), complete.substring(k+1).indexOf("#"));
+					actorData[7] = complete.substring(complete.indexOf(">")+1, complete.substring(k+1).indexOf("#"));
 				}
 				else
 				{
-					actorData[7] = complete.substring(complete.indexOf(">"));
+					actorData[7] = complete.substring(complete.indexOf(">")+1);
 				}
-				output.add(actorData);
+				outputA.add(actorData);
 			}
-		return output;
+		return outputA;
 		}
-		return output;
+		return outputA;
 	}
 	
 	//  !!!  consider leaving markers while elements are in the arrays, just omit them when printing strings
@@ -120,8 +120,8 @@ public class VSstore
 		//writes to the file
 		fw.write(toSave);
 		fw.flush();
-		fw.close();
 		//prints what was written
 		System.out.println(toSave);
+		System.out.println("Your data has been saved.");
 	}
 }
