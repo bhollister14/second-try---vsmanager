@@ -30,11 +30,39 @@ public class VSsearch
 			{
 				searchResults = searchByName(searchResults);
 			}
+			if (selectSearchOption==2)
+			{
+				searchResults = searchByScene(searchResults);
+			}
+			if (selectSearchOption==3)
+			{
+				searchResults = searchByRole(searchResults);
+			}
+			if (selectSearchOption==4)
+			{
+				searchResults = searchByGrade(searchResults);
+			}
+			if (selectSearchOption==5)
+			{
+				searchResults = searchByHeight(searchResults);
+			}
+			if (selectSearchOption==6)
+			{
+				searchResults = searchByWeight(searchResults);
+			}
+			if (selectSearchOption==7)
+			{
+				searchResults = searchByMeasurements(searchResults);
+			}
+			if (selectSearchOption==8)
+			{
+				searchResults = searchByNotes(searchResults);
+			}
 			VSsearch.displayResults(searchResults);
 			System.out.println("Would you like to use these results in another search? (Y/N)");
 			anotherSearch = kb.nextLine(); //WHY DOES THIS GET IGNORED UGH **DON'T IGNORE MEEEEE**
 			anotherSearch = kb.nextLine(); //for some reason when i add it twice it works???
-			if (anotherSearch.equals("N"))
+			if (anotherSearch.equals("N") || anotherSearch.equals("n"))
 			{
 				keepSearch = false;
 				searchResults = VSsearch.clearSearch(searchResults);
@@ -64,8 +92,166 @@ public class VSsearch
 		return outputS;
 	}
 	
+	public static ArrayList<String[]> searchByScene(ArrayList<String[]> searchResults)
+	{	
+		Scanner kb = new Scanner(System.in);
+		ArrayList<String[]> outputS = new ArrayList<String[]>();
+		//outputS = searchResults;
+
+		String[] actor = new String[8];
+		System.out.println("Search by scene:");
+		String findName = kb.nextLine(); //enter letters to search by
+		
+		for (int v=0; v<searchResults.size(); v++)
+		{ //look through all the names for matches
+			actor = searchResults.get(v); 
+			if (searchResults.get(v)[1].indexOf(findName)>=0)
+			{ //if it matches add the String[] to the output
+				outputS.add(actor);
+				//break; //had out of error heap space blah thing until i added this line
+			}
+		}
+		return outputS;
+	}
+	
+	public static ArrayList<String[]> searchByRole(ArrayList<String[]> searchResults)
+	{	
+		Scanner kb = new Scanner(System.in);
+		ArrayList<String[]> outputS = new ArrayList<String[]>();
+		//outputS = searchResults;
+
+		String[] actor = new String[8];
+		System.out.println("Search by role:");
+		String findName = kb.nextLine(); //enter letters to search by
+		
+		for (int v=0; v<searchResults.size(); v++)
+		{ //look through all the names for matches
+			actor = searchResults.get(v); 
+			if (searchResults.get(v)[2].indexOf(findName)>=0)
+			{ //if it matches add the String[] to the output
+				outputS.add(actor);
+				//break; //had out of error heap space blah thing until i added this line
+			}
+		}
+		return outputS;
+	}
+	
+	public static ArrayList<String[]> searchByGrade(ArrayList<String[]> searchResults)
+	{	
+		Scanner kb = new Scanner(System.in);
+		ArrayList<String[]> outputS = new ArrayList<String[]>();
+		//outputS = searchResults;
+
+		String[] actor = new String[8];
+		System.out.println("Search by grade:");
+		String findName = kb.nextLine(); //enter letters to search by
+		
+		for (int v=0; v<searchResults.size(); v++)
+		{ //look through all the names for matches
+			actor = searchResults.get(v); 
+			if (searchResults.get(v)[3].indexOf(findName)>=0)
+			{ //if it matches add the String[] to the output
+				outputS.add(actor);
+				//break; //had out of error heap space blah thing until i added this line
+			}
+		}
+		return outputS;
+	}
+	
+	public static ArrayList<String[]> searchByHeight(ArrayList<String[]> searchResults)
+	{	
+		Scanner kb = new Scanner(System.in);
+		ArrayList<String[]> outputS = new ArrayList<String[]>();
+		//outputS = searchResults;
+
+		String[] actor = new String[8];
+		System.out.println("Search by height:");
+		String findName = kb.nextLine(); //enter letters to search by
+		
+		for (int v=0; v<searchResults.size(); v++)
+		{ //look through all the names for matches
+			actor = searchResults.get(v); 
+			if (searchResults.get(v)[4].indexOf(findName)>=0)
+			{ //if it matches add the String[] to the output
+				outputS.add(actor);
+				//break; //had out of error heap space blah thing until i added this line
+			}
+		}
+		return outputS;
+	}
+	
+	public static ArrayList<String[]> searchByWeight(ArrayList<String[]> searchResults)
+	{	
+		Scanner kb = new Scanner(System.in);
+		ArrayList<String[]> outputS = new ArrayList<String[]>();
+		//outputS = searchResults;
+
+		String[] actor = new String[8];
+		System.out.println("Search by weight:");
+		String findName = kb.nextLine(); //enter letters to search by
+		
+		for (int v=0; v<searchResults.size(); v++)
+		{ //look through all the names for matches
+			actor = searchResults.get(v); 
+			if (searchResults.get(v)[5].indexOf(findName)>=0)
+			{ //if it matches add the String[] to the output
+				outputS.add(actor);
+				//break; //had out of error heap space blah thing until i added this line
+			}
+		}
+		return outputS;
+	}
+	
+	public static ArrayList<String[]> searchByMeasurements(ArrayList<String[]> searchResults)
+	{	
+		Scanner kb = new Scanner(System.in);
+		ArrayList<String[]> outputS = new ArrayList<String[]>();
+		//outputS = searchResults;
+
+		String[] actor = new String[8];
+		System.out.println("Search by measurement:");
+		String findName = kb.nextLine(); //enter letters to search by
+		
+		for (int v=0; v<searchResults.size(); v++)
+		{ //look through all the names for matches
+			actor = searchResults.get(v); 
+			if (searchResults.get(v)[6].indexOf(findName)>=0)
+			{ //if it matches add the String[] to the output
+				outputS.add(actor);
+				//break; //had out of error heap space blah thing until i added this line
+			}
+		}
+		return outputS;
+	}
+	
+	public static ArrayList<String[]> searchByNotes(ArrayList<String[]> searchResults)
+	{	
+		Scanner kb = new Scanner(System.in);
+		ArrayList<String[]> outputS = new ArrayList<String[]>();
+		//outputS = searchResults;
+
+		String[] actor = new String[8];
+		System.out.println("Search by note:");
+		String findName = kb.nextLine(); //enter letters to search by
+		
+		for (int v=0; v<searchResults.size(); v++)
+		{ //look through all the names for matches
+			actor = searchResults.get(v); 
+			if (searchResults.get(v)[7].indexOf(findName)>=0)
+			{ //if it matches add the String[] to the output
+				outputS.add(actor);
+				//break; //had out of error heap space blah thing until i added this line
+			}
+		}
+		return outputS;
+	}
+	
 	public static void displayResults(ArrayList<String[]> searchResults)
 	{
+		if (searchResults.size() == 0)
+		{
+			System.out.println("No actors found matching your search terms.");
+		}
 		String display = new String("");
 		String[] actors2 = new String[8];
 		display = "";
@@ -75,11 +261,11 @@ public class VSsearch
 			for (int g=0; g<8; g++)
 			{
 				display+=actors2[g]+"\n";
-				break; //take out later--just for testing
+				//break; //take out later--just for testing
 			}
 			display+="\n";
 		}
-		System.out.println(display+searchResults.size());
+		System.out.println(display);
 	}
 	
 	public static ArrayList<String[]> clearSearch(ArrayList<String[]> searchResults)

@@ -37,17 +37,36 @@ public class VSstore
 			if (complete.substring(l, l+1).equals("#"))
 				countHashOne++;
 		}
+		//System.out.println(countHashOne);  //counts okay...
 		int needLists = countHashOne-1;
 		String[] actorData = new String[8];
 
 		//goes through every letter/character for special chars
-		for (int k=0; k<complete.length()-1; k++)
+		for (int k=0; k<needLists; k++)
 		{
 			//#a~a!a%a&a*a<aa>a
 			//when the name one is found, add the rest of the stuff 
 			//  right after it to the other elements of the string[] for that castList index
 			if (complete.substring(k, k+1).equals("#"))
 			{
+				outputA.add(new String[]{
+						complete.substring(complete.indexOf("#")+1, complete.indexOf("~")),
+						complete.substring(complete.indexOf("~")+1, complete.indexOf("!")),
+						complete.substring(complete.indexOf("!")+1, complete.indexOf("%")),
+						complete.substring(complete.indexOf("%")+1, complete.indexOf("&")),
+						complete.substring(complete.indexOf("&")+1, complete.indexOf("*")),
+						complete.substring(complete.indexOf("*")+1, complete.indexOf("<")),
+						complete.substring(complete.indexOf("<")+1, complete.indexOf(">"))
+						});
+				if (complete.substring(k+1).indexOf("#")!=-1)
+				{
+					outputA.get(k)[7] = complete.substring(complete.indexOf(">")+1, complete.substring(k+1).indexOf("#"));
+				}
+				else
+				{
+					outputA.get(k)[7] = complete.substring(complete.indexOf(">")+1);
+				}
+				/*
 				actorData[0] = complete.substring(complete.indexOf("#")+1, complete.indexOf("~"));
 				actorData[1] = complete.substring(complete.indexOf("~")+1, complete.indexOf("!"));
 				actorData[2] = complete.substring(complete.indexOf("!")+1, complete.indexOf("%"));
@@ -64,9 +83,18 @@ public class VSstore
 				{
 					actorData[7] = complete.substring(complete.indexOf(">")+1);
 				}
-				outputA.add(actorData);
+				*/
+				//outputA.add(actorData);
+			}
+			if (outputA.size()>0)
+			{
+				VSsearch.displayResults(outputA);
 			}
 		return outputA;
+		}
+		if (outputA.size()>0)
+		{
+			VSsearch.displayResults(outputA);
 		}
 		return outputA;
 	}

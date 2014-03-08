@@ -28,14 +28,14 @@ public class VSmain
 		String filename = new String("");
 		
 		//>yes: please enter filename here, open that file, extract existing info
-		if (fileYN.equals("Y"))
+		if (fileYN.equals("Y")||fileYN.equals("y"))
 		{
 			System.out.println("Please enter file name:");
 			filename = kb.nextLine();
 		}
 		
 		//>no: please enter filename here, create that file, open it, write default info
-		else if (fileYN.equals("N"))
+		if (fileYN.equals("N")||fileYN.equals("n"))
 		{
 			System.out.println("Please enter a file name:");
 			filename = kb.nextLine();
@@ -53,11 +53,12 @@ public class VSmain
 		FileWriter fw = new FileWriter(filename+".txt");
 		
 		//test code, to see what was in the .txt file
-		System.out.println(textData);
+		//System.out.println(textData);
 		
 		//arrayList of string arrays to hold the data while application is running
 		ArrayList<String[]> castList = new ArrayList<String[]>();
 		castList = VSstore.openActor(castList, fr, textData);
+		System.out.println("Your file '"+filename+".txt' has been opened.");
 		
 		//loop to display the menu after completing actions
 		while (runProgram)

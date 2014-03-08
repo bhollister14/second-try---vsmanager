@@ -65,7 +65,7 @@ public class VSedit
 			for (int k=0; k<outputE.size(); k++)
 			{//ERROR: NO CHANGES CAN BE MADE??
 				temp = outputE.get(k);
-				System.out.println("Temp 0 = " + temp[0]);
+				//System.out.println("Temp 0 = " + temp[0]);
 				if (temp[0].equals(changePerson))
 				{ //allows for specific changes based on person's name (same k, same person)
 					System.out.println("What would you like to change? \n(0)name \n(1)scene \n(2)role \n(3)grade \n(4)height \n(5)weight \n(6)measurements \n(7)notes");
@@ -166,7 +166,7 @@ public class VSedit
 				if (outputL.get(k)[0].equals(ansDel))
 				{
 					System.out.println("Are you sure? (Y/N)");
-					if (kb.nextLine().equals("Y"))
+					if (kb.nextLine().equals("Y") || kb.nextLine().equals("y"))
 					{
 						outputL.remove(k);
 						System.out.println("Actor successfully deleted.");
