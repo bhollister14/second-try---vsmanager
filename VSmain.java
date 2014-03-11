@@ -15,6 +15,19 @@ import java.util.ArrayList;
  *  >by grade
  */
 
+/* credits to
+ * //http://www.tutorialspoint.com/java/java_filewriter_class.htm
+ * for help with the filewriter class
+ * and
+ * http://www.mkyong.com/java/how-to-read-file-from-java-bufferedreader-example/
+ * for help with bufferedreader (used to read from text files)
+ * 
+ * for testing, copy-paste the following code into an existing file 
+ * in the same folder as the .java files:
+ * 
+ * #david~3!3%3&3*3<3>3#amanda~2!2%2&2*2<2>2#malcolm~5!5%5&5*5<5>5#bri~7!7%7&7*7<7>7++++
+ */
+
 //behold, my poorly commented code
 
 public class VSmain 
@@ -46,6 +59,9 @@ public class VSmain
 		}
 		
 		//for reading from and writing to files
+		
+		//with help from http://www.mkyong.com/java/how-to-read-file-from-java-bufferedreader-example/
+		//for help with bufferedreader (used to read from text files)
 		FileReader fr = new FileReader(filename+".txt");
 		BufferedReader textReader = new BufferedReader(fr);
 		String textData = new String();
@@ -107,6 +123,7 @@ public class VSmain
 		}
 		if (ansAction==6)
 		{
+			//just closes the file writer. but it still saves. to the text file.
 			runProgram = false;
 			System.out.println("Bye-bye!");
 		}

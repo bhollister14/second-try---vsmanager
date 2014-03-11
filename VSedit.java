@@ -47,6 +47,7 @@ public class VSedit
 			outputD.get(arraySize)[6]=kb.nextLine();
 			System.out.println("Actor notes:");
 			outputD.get(arraySize)[7]=kb.nextLine();
+			
 			return outputD;
 		}
 		

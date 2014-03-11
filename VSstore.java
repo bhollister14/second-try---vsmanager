@@ -40,10 +40,12 @@ public class VSstore
 		int needLists = countHashOne-1;
 
 		//goes through every letter/character for special chars
+		//*****THE ERROR IS HERE--INDEX OUT OF BOUNDS
 		for (int k=0; k<needLists; k++)
 		{
 			outputA.add(new String[]{"","","","","","","",""});
-			for (int e=0; e<countHashOne; e++)
+			int aLength = complete.length();
+			for (int e=0; e< aLength; e++)
 			{
 				if (complete.substring(e,e+1).equals("#"))
 					outputA.get(k)[0] = complete.substring(e+1,complete.indexOf("~"));
@@ -60,7 +62,11 @@ public class VSstore
 				if (complete.substring(e,e+1).equals("<"))
 					outputA.get(k)[6] = complete.substring(e+1,complete.indexOf(">"));
 				if (complete.substring(e,e+1).equals(">") && complete.substring(complete.indexOf(">")).indexOf("#")!=-1)
+				{
+					if (complete.indexOf("#")!=0)
+						complete = complete.substring(complete.indexOf("#"));
 					outputA.get(k)[7] = complete.substring(e+1,complete.indexOf("#"));
+				}
 				if (complete.indexOf("#")==-1)
 				{
 					outputA.get(k)[7] = complete.substring(complete.indexOf(">")+1,complete.indexOf("++++"));
@@ -125,8 +131,13 @@ public class VSstore
 		}
 		toSave+="++++";
 		//writes to the file
+		
+		//http://www.tutorialspoint.com/java/java_filewriter_class.htm
+		//for help with the filewriter class
+		
 		fw.write(toSave);
 		fw.flush();
+		
 		//prints what was written
 		System.out.println(toSave); //for checking that translation was successful
 		System.out.println("Your data has been saved.");
