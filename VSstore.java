@@ -44,53 +44,45 @@ public class VSstore
 		//goes through every letter/character for special chars
 		for (int k=0; k<needLists; k++)
 		{
-			//#a~a!a%a&a*a<aa>a
-			//when the name one is found, add the rest of the stuff 
-			//  right after it to the other elements of the string[] for that castList index
-			if (complete.substring(k, k+1).equals("#"))
+			for (int e=0; e<complete.length()-1; e++)
 			{
-				outputA.add(new String[]{
-						complete.substring(complete.indexOf("#")+1, complete.indexOf("~")),
-						complete.substring(complete.indexOf("~")+1, complete.indexOf("!")),
-						complete.substring(complete.indexOf("!")+1, complete.indexOf("%")),
-						complete.substring(complete.indexOf("%")+1, complete.indexOf("&")),
-						complete.substring(complete.indexOf("&")+1, complete.indexOf("*")),
-						complete.substring(complete.indexOf("*")+1, complete.indexOf("<")),
-						complete.substring(complete.indexOf("<")+1, complete.indexOf(">"))
-						});
-				if (complete.substring(k+1).indexOf("#")!=-1)
+				if (complete.substring(e, e+1).equals("#"))
 				{
-					outputA.get(k)[7] = complete.substring(complete.indexOf(">")+1, complete.substring(k+1).indexOf("#"));
+					if (complete.substring(complete.indexOf("#")+1).indexOf("#")!=-1)
+					{
+						outputA.add(new String[]{
+							complete.substring(complete.indexOf("#")+1, complete.indexOf("~")),
+							complete.substring(complete.indexOf("~")+1, complete.indexOf("!")),
+							complete.substring(complete.indexOf("!")+1, complete.indexOf("%")),
+							complete.substring(complete.indexOf("%")+1, complete.indexOf("&")),
+							complete.substring(complete.indexOf("&")+1, complete.indexOf("*")),
+							complete.substring(complete.indexOf("*")+1, complete.indexOf("<")),
+							complete.substring(complete.indexOf("<")+1, complete.indexOf(">")),
+							complete.substring(complete.indexOf(">")+1, complete.substring(complete.indexOf("#")+1).indexOf("#"))
+							});
+					}
+					if (complete.substring(complete.indexOf("#")+1).indexOf("#")==-1)
+					{
+						outputA.add(new String[]{
+								complete.substring(complete.indexOf("#")+1, complete.indexOf("~")),
+								complete.substring(complete.indexOf("~")+1, complete.indexOf("!")),
+								complete.substring(complete.indexOf("!")+1, complete.indexOf("%")),
+								complete.substring(complete.indexOf("%")+1, complete.indexOf("&")),
+								complete.substring(complete.indexOf("&")+1, complete.indexOf("*")),
+								complete.substring(complete.indexOf("*")+1, complete.indexOf("<")),
+								complete.substring(complete.indexOf("<")+1, complete.indexOf(">")),
+								complete.substring(complete.indexOf(">")+1, complete.indexOf("µ"))
+								});
+					}
+					complete = complete.substring(complete.indexOf(">")+1);
+					if (complete.substring(complete.indexOf(">")+1).indexOf(">")!=-1)
+					{
+						e=0;
+					}
 				}
-				else
-				{
-					outputA.get(k)[7] = complete.substring(complete.indexOf(">")+1);
-				}
-				/*
-				actorData[0] = complete.substring(complete.indexOf("#")+1, complete.indexOf("~"));
-				actorData[1] = complete.substring(complete.indexOf("~")+1, complete.indexOf("!"));
-				actorData[2] = complete.substring(complete.indexOf("!")+1, complete.indexOf("%"));
-				actorData[3] = complete.substring(complete.indexOf("%")+1, complete.indexOf("&"));
-				actorData[4] = complete.substring(complete.indexOf("&")+1, complete.indexOf("*"));
-				actorData[5] = complete.substring(complete.indexOf("*")+1, complete.indexOf("<"));
-				actorData[6] = complete.substring(complete.indexOf("<")+1, complete.indexOf(">"));
-				//just in case this is the last person needed to list... stop looking for #
-				if (complete.substring(k+1).indexOf("#")!=-1)
-				{
-					actorData[7] = complete.substring(complete.indexOf(">")+1, complete.substring(k+1).indexOf("#"));
-				}
-				else
-				{
-					actorData[7] = complete.substring(complete.indexOf(">")+1);
-				}
-				*/
-				//outputA.add(actorData);
 			}
-			if (outputA.size()>0)
-			{
-				VSsearch.displayResults(outputA);
-			}
-		return outputA;
+			//complete = complete.substring(complete.substring(complete.indexOf("#")+1).indexOf("#"));
+			System.out.println(complete);
 		}
 		if (outputA.size()>0)
 		{
@@ -144,12 +136,13 @@ public class VSstore
 					toSave+=">"+castList.get(q)[7];
 				}
 			}
+			toSave+="µ";
 		}
 		//writes to the file
 		fw.write(toSave);
 		fw.flush();
 		//prints what was written
-		System.out.println(toSave);
+		//System.out.println(toSave); //for checking that translation was successful
 		System.out.println("Your data has been saved.");
 	}
 }
