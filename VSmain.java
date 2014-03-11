@@ -15,6 +15,8 @@ import java.util.ArrayList;
  *  >by grade
  */
 
+//behold, my poorly commented code
+
 public class VSmain 
 {
 	static boolean runProgram = true;
@@ -72,7 +74,7 @@ public class VSmain
 	public static void selectAction(ArrayList<String[]> castList, FileWriter fw) throws IOException
 	{
 		Scanner kba = new Scanner(System.in);
-		System.out.println("What would you like to do? \n(1)add actor \n(2)edit actor \n(3)delete actor \n(4)save \n(5)search \n(6)exit");
+		System.out.println("What would you like to do? \n(1)add actor \n(2)edit actor \n(3)delete actor \n(4)search \n(5)save \n(6)exit");
 		int ansAction = kba.nextInt();
 		
 		ArrayList<String[]> searchResults = new ArrayList<String[]>();
@@ -94,14 +96,14 @@ public class VSmain
 		}
 		if (ansAction==4)
 		{
-			//puts data from arrays, translates it (adds markers), turns into single string, writes to file
-			VSstore.saveActor(castList, fw);
-		}
-		if (ansAction==5)
-		{
 			//search filters BEGINNNNNN
 			searchResults = castList;
 			VSsearch.searchOption(searchResults);
+		}
+		if (ansAction==5)
+		{
+			//puts data from arrays, translates it (adds markers), turns into single string, writes to file
+			VSstore.saveActor(castList, fw);
 		}
 		if (ansAction==6)
 		{

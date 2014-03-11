@@ -68,66 +68,63 @@ public class VSedit
 				//System.out.println("Temp 0 = " + temp[0]);
 				if (temp[0].equals(changePerson))
 				{ //allows for specific changes based on person's name (same k, same person)
-					System.out.println("What would you like to change? \n(0)name \n(1)scene \n(2)role \n(3)grade \n(4)height \n(5)weight \n(6)measurements \n(7)notes");
+					System.out.println("What would you like to change? \n(1)name \n(2)scene \n(3)role \n(4)grade \n(5)height \n(6)weight \n(7)measurements \n(8)notes");
 					int ansAction;
 					ansAction = kb.nextInt();
 					System.out.println(ansAction);
 					String input = new String("");
 					if (ansAction>=0 && ansAction<=7)
 					{
-					if (ansAction==0)
+					if (ansAction==1)
 					{
 						System.out.println("current name: "+temp[0]);
 						System.out.println("What would you like to change it to?");
 						input = kb.nextLine();
 						temp[0] = input;
-						//String test = kb.nextLine();
-						//temp[0] = test;
-						//System.out.println(temp[0]);
 					}
-					else if (ansAction==1)
+					else if (ansAction==2)
 					{
 						System.out.println("current scene: "+temp[1]);
 						System.out.println("What would you like to change it to?");
 						input = kb.nextLine();
 						temp[1] = input;
 					}
-					else if (ansAction==2)
+					else if (ansAction==3)
 					{
 						System.out.println("current role: "+temp[2]);
 						System.out.println("What would you like to change it to?");
 						input = kb.nextLine();
 						temp[2] = input;
 					}
-					else if (ansAction==3)
+					else if (ansAction==4)
 					{
 						System.out.println("current grade: "+temp[3]);
 						System.out.println("What would you like to change it to?");
 						input = kb.nextLine();
 						temp[3] = input;
 					}
-					else if (ansAction==4)
+					else if (ansAction==5)
 					{
 						System.out.println("current height: "+temp[4]);
 						System.out.println("What would you like to change it to?");
 						input = kb.nextLine();
 						temp[4] = input;
 					}
-					else if (ansAction==5)
+					else if (ansAction==6)
 					{
 						System.out.println("current weight: "+temp[5]);
 						System.out.println("What would you like to change it to?");
 						input = kb.nextLine();
 						temp[5] = input;
 					}
-					else if (ansAction==6)
+					else if (ansAction==7)
 					{
 						System.out.println("current measurements: "+temp[6]);
 						System.out.println("What would you like to change it to?");
 						input = kb.nextLine();
 						temp[6] = input;
 					}
-					else if (ansAction==7)
+					else if (ansAction==8)
 					{
 						System.out.println("current notes: "+temp[7]);
 						System.out.println("What would you like to change it to?");

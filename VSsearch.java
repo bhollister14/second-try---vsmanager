@@ -277,5 +277,3 @@ public class VSsearch
 		return searchResults;
 	}
 }
-
-//PRINTS OUT THE ORIGINAL ACTORS **PLUS** THE SEARCH RESULTS

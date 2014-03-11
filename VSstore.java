@@ -37,52 +37,38 @@ public class VSstore
 			if (complete.substring(l, l+1).equals("#"))
 				countHashOne++;
 		}
-		//System.out.println(countHashOne);  //counts okay...
 		int needLists = countHashOne-1;
-		String[] actorData = new String[8];
 
 		//goes through every letter/character for special chars
 		for (int k=0; k<needLists; k++)
 		{
-			for (int e=0; e<complete.length()-1; e++)
+			outputA.add(new String[]{"","","","","","","",""});
+			for (int e=0; e<countHashOne; e++)
 			{
-				if (complete.substring(e, e+1).equals("#"))
+				if (complete.substring(e,e+1).equals("#"))
+					outputA.get(k)[0] = complete.substring(e+1,complete.indexOf("~"));
+				if (complete.substring(e,e+1).equals("~"))
+					outputA.get(k)[1] = complete.substring(e+1,complete.indexOf("!"));
+				if (complete.substring(e,e+1).equals("!"))
+					outputA.get(k)[2] = complete.substring(e+1,complete.indexOf("%"));
+				if (complete.substring(e,e+1).equals("%"))
+					outputA.get(k)[3] = complete.substring(e+1,complete.indexOf("&"));
+				if (complete.substring(e,e+1).equals("&"))
+					outputA.get(k)[4] = complete.substring(e+1,complete.indexOf("*"));
+				if (complete.substring(e,e+1).equals("*"))
+					outputA.get(k)[5] = complete.substring(e+1,complete.indexOf("<"));
+				if (complete.substring(e,e+1).equals("<"))
+					outputA.get(k)[6] = complete.substring(e+1,complete.indexOf(">"));
+				if (complete.substring(e,e+1).equals(">") && complete.substring(complete.indexOf(">")).indexOf("#")!=-1)
+					outputA.get(k)[7] = complete.substring(e+1,complete.indexOf("#"));
+				if (complete.indexOf("#")==-1)
 				{
-					if (complete.substring(complete.indexOf("#")+1).indexOf("#")!=-1)
-					{
-						outputA.add(new String[]{
-							complete.substring(complete.indexOf("#")+1, complete.indexOf("~")),
-							complete.substring(complete.indexOf("~")+1, complete.indexOf("!")),
-							complete.substring(complete.indexOf("!")+1, complete.indexOf("%")),
-							complete.substring(complete.indexOf("%")+1, complete.indexOf("&")),
-							complete.substring(complete.indexOf("&")+1, complete.indexOf("*")),
-							complete.substring(complete.indexOf("*")+1, complete.indexOf("<")),
-							complete.substring(complete.indexOf("<")+1, complete.indexOf(">")),
-							complete.substring(complete.indexOf(">")+1, complete.substring(complete.indexOf("#")+1).indexOf("#"))
-							});
-					}
-					if (complete.substring(complete.indexOf("#")+1).indexOf("#")==-1)
-					{
-						outputA.add(new String[]{
-								complete.substring(complete.indexOf("#")+1, complete.indexOf("~")),
-								complete.substring(complete.indexOf("~")+1, complete.indexOf("!")),
-								complete.substring(complete.indexOf("!")+1, complete.indexOf("%")),
-								complete.substring(complete.indexOf("%")+1, complete.indexOf("&")),
-								complete.substring(complete.indexOf("&")+1, complete.indexOf("*")),
-								complete.substring(complete.indexOf("*")+1, complete.indexOf("<")),
-								complete.substring(complete.indexOf("<")+1, complete.indexOf(">")),
-								complete.substring(complete.indexOf(">")+1, complete.indexOf("µ"))
-								});
-					}
-					complete = complete.substring(complete.indexOf(">")+1);
-					if (complete.substring(complete.indexOf(">")+1).indexOf(">")!=-1)
-					{
-						e=0;
-					}
+					outputA.get(k)[7] = complete.substring(complete.indexOf(">")+1,complete.indexOf("++++"));
+					complete = "";
 				}
+				System.out.println(complete);
+				complete = complete.substring(complete.indexOf(">")+1);
 			}
-			//complete = complete.substring(complete.substring(complete.indexOf("#")+1).indexOf("#"));
-			System.out.println(complete);
 		}
 		if (outputA.size()>0)
 		{
@@ -136,13 +122,13 @@ public class VSstore
 					toSave+=">"+castList.get(q)[7];
 				}
 			}
-			toSave+="µ";
 		}
+		toSave+="++++";
 		//writes to the file
 		fw.write(toSave);
 		fw.flush();
 		//prints what was written
-		//System.out.println(toSave); //for checking that translation was successful
+		System.out.println(toSave); //for checking that translation was successful
 		System.out.println("Your data has been saved.");
 	}
 }
